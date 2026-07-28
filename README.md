@@ -221,7 +221,26 @@ PUF-Pay/
 > block in isolation.
 
 ---
-
+> ⚠️ **Important Setup Note**
+>
+> The testbenches (`tb_two_chips.v`, `tb_puf_pay_top.v`) currently write
+> generated keys using an **absolute file path** (e.g.
+> `C:/Users/.../shared/puf_key_chipA.txt`), since this repo was developed
+> and tested locally in Vivado on Windows.
+>
+> **Before running simulation on your own machine**, open the testbench
+> file and update the `$fopen(...)` path to match your local project
+> location — for example:
+>
+> ```verilog
+> file = $fopen("YOUR_LOCAL_PATH/shared/puf_key_chipA.txt", "w");
+> ```
+>
+> Similarly, if you clone this repo and run the Python scripts from a
+> different folder structure, update the file path in `run_full_demo_v2.py`
+> to point to your local `shared/` folder.
+>
+> This will be replaced with a relative-path solution in a future revision.
 ## 🐍 Quickstart — Software Demo (Python)
 
 **Requirements:** Python 3.10+
@@ -353,12 +372,4 @@ We believe in being transparent about what is *physically real* vs.
 ---
 
 ## 👤 Author
-
-Built for the **GIFT IFIH Young Builders Program** by a final-year ECE
-student specializing in VLSI design.
-
-**Deadline:** August 16, 2026
-
----
-
-*PUF-Pay — your silicon is your password.*
+Jay Jain | Siddharth Pandey
