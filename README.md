@@ -111,30 +111,30 @@ a unique **128-bit fingerprint** for every chip.
 
 ```
 ┌─────────────────────┐     ┌──────────────────────┐     ┌────────────────────┐
-│   MODULE 3           │     │   MODULE 4            │     │   MODULE 5          │
-│   RO PUF Core        │     │   Fuzzy Extractor     │     │   Anti-Tamper       │
-│                       │     │                        │     │                     │
-│  256 Ring Oscillators │────▶│  128-bit noise-        │────▶│  Monitors voltage,  │
-│  paired & compared    │     │  tolerant key          │     │  temperature, and   │
-│  → 128-bit PUF        │     │  stabilization          │     │  brute-force auth   │
+│   MODULE 3          │     │   MODULE 4           │     │   MODULE 5         │
+│   RO PUF Core       │     │   Fuzzy Extractor    │     │   Anti-Tamper      │
+│                     │     │                      │     │                    │
+│  256 Ring Oscillator│───▶│  128-bit noise-       │───▶│  Monitors voltage, │
+│  paired & compared  │     │  tolerant key        │     │  temperature, and  │
+│  → 128-bit PUF      │     │  stabilization       │     │  brute-force auth  │
 └─────────────────────┘     └──────────────────────┘     └────────────────────┘
          ▲                                                          │
          │ silicon entropy                                          ▼
   (manufacturing variation,                              zeroize + lock system
    modeled via CHIP_SEED)                                  on tamper detection
-                                                                     │
-                                                                     ▼
+                                                                    │
+                                                                    ▼
                                                         ┌────────────────────┐
                                                         │  128-bit Private   │
-                                                        │  Key Output         │
+                                                        │  Key Output        │
                                                         └────────────────────┘
                                                                      │
                                                                      ▼
                                                         ┌────────────────────┐
-                                                        │  Python: ECDSA      │
-                                                        │  sign transaction    │
-                                                        │  Bank verifies with  │
-                                                        │  stored public key   │
+                                                        │  Python: ECDSA     │
+                                                        │  sign transaction  │
+                                                        │  Bank verifies with│
+                                                        │  stored public key │
                                                         └────────────────────┘
 ```
 
