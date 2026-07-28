@@ -9,8 +9,6 @@ A hardware security IP that generates a unique 128-bit private key from the
 physical, unclonable variations in a chip's silicon — never stored, always
 regenerated, impossible to clone.
 
----
-
 ## 📌 Table of Contents
 
 - [The Problem](#-the-problem)
